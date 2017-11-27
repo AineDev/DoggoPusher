@@ -4,8 +4,8 @@
 //#include <Adafruit_GFX.h>
 //#include <Adafruit_PCD8544.h>
 
-char ssid[] = "Aine's iPhone";
-char pass[] = "12345678";
+char ssid[] = "WIFI NETWORK NAME";
+char pass[] = "WIFI PASSWORD";
 int status = WL_IDLE_STATUS;
 WiFiClient client;
 Servo myservo;
@@ -54,7 +54,7 @@ void setup() {
     delay(5000);
   }
   myservo.attach(9);
-  Serial.println("hello, please press '?'");
+  Serial.println("hello");        //USE SERIAL OUTPUT TO SEE IF YOU'RE CONNECTING TO WIFI
 }
 
 void loop() {
@@ -88,11 +88,6 @@ void loop() {
         }
         if (acc.startsWith("{\"statuses\":[{\"created_at") || acc.startsWith("\"since_id_str\":\"0\"}}{\"statuses\":[{\"created_at")) { // find the time it was created
           if (isLater(acc)) {                                 // true if found date is strictly later than the previously seen tweet
-//            digitalWrite(9, HIGH);   // turn the LED on (HIGH is the voltage level)
-//            delay(1000);                       // wait for a second
-//            digitalWrite(9, LOW);    // turn the LED off by making the voltage LOW
-//            delay(1000);
-
               int counter = 0;
               int pos = 0;
               delay(1000);
@@ -266,9 +261,8 @@ void Button() {
   {
 
     // break up string to read easier
-    //Merry%20
     String getPrefix = "GET /1.1/search/tweets.json?";
-    String getQuery = "q=%40\"Christmas\"";
+    String getQuery = "q=%40\"doggo\"";                       // CHANGE THIS PHRASE TO ANYTHING
     String getPostfix = "&lang=en&result_type=recent&count=1 HTTP/1.1";
 
     // check if we have a newID
